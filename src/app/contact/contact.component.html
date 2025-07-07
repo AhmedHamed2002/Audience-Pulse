@@ -1,0 +1,174 @@
+<section class="bg-neutral-900 min-h-lvh pt-32 pb-20 md:pt-40 md:pb-28 lg:pb-32">
+  <div class="container mx-auto flex items-center justify-between flex-col">
+    <div class="w-10/12 md:w-8/12 text-center reveal-from-bottom">
+      <p class="text-slate-50 font-semibold text-lg md:text-2xl lg:text-3xl">Don't miss out on the latest insights and strategies from</p>
+      <h2 class="mainTextDesign font-bold text-2xl md:text-4xl mt-2">Audience Pulse</h2>
+      <p class="text-gray-500 lg:px-24 mt-4 text-sm md:text-base">
+        Stay connected with us and never miss an update. Please ensure your email matches your registered account details.
+      </p>
+    </div>
+
+    <div class="mt-16 md:mt-28 mx-auto w-11/12">
+      <div class="flex items-center justify-between">
+        <div class="lg:w-72 mt-5 pt-5 cursor-pointer hidden lg:block md:me-8 lg:me-10 reveal-from-left">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="w-full px-2 lg:px-0 lg:w-7/12 mx-auto">
+            <div class="request relative py-8 shadow lg:shadow-purple-700 rounded-lg px-10 md:px-6 lg:px-10 reveal-from-right">
+              <form [formGroup]="requestForm" (ngSubmit)="request(requestForm)">
+
+                <div class="lg:mb-2">
+                  <label for="request_name" class="block text-sm font-medium text-gray-300">
+                    Request Name (keyword)<span class="text-red-500 ms-2">*</span>
+                  </label>
+                  <div class="mt-2 relative">
+                    <input id="request_name" name="request_name" type="text" formControlName="request_name" required  dir="auto"
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                      placeholder="Enter your keyword"
+                      >
+
+                      <div *ngIf="requestForm.controls.request_name.invalid && requestForm.controls.request_name.touched"
+                        class="text-red-500 text-xs mt-1">
+                        Please enter a keyword consisting of one or two words only.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3 md:mb-2 lg:mb-4 mt-8 flex  flex-wrap items-center justify-between">
+                  <div  class="w-full mb-5 lg:w-2/5">
+                    <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="flex items-center justify-center p-3 text-sm font-medium text-center text-white w-full bg-neutral-900 border border-purple-950 rounded-lg hover:bg-violet-700  focus:outline-none" type="button">Request Platform<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg></button>
+                    <!-- Dropdown menu -->
+                    <div formGroupName="platforms" id="dropdownSearch" class="z-10 hidden bg-white rounded-lg shadow-sm w-60 dark:bg-gray-700">
+                      <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+                        <li>
+                          <div class="flex items-center p-2 rounded-sm hover:bg-gray-100">
+                            <input formControlName="x_twitter" id="checkbox-item-1" type="checkbox" value="X-Twitter" class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 rounded-sm">
+                            <label for="checkbox-item-1" class="w-full ms-2 text-sm font-medium text-purple-900 rounded-sm dark:text-gray-300">X - Twitter</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center p-2 rounded-sm hover:bg-gray-100">
+                              <input formControlName="facebook" checked id="checkbox-item-2" type="checkbox" value="Facebook" class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 rounded-sm">
+                              <label for="checkbox-item-2" class="w-full ms-2 text-sm font-medium text-purple-900 rounded-sm dark:text-gray-300">Facebook</label>
+                            </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div *ngIf="!isPlatformSelected()" class="text-red-500 text-sm mt-1">
+                      At least one platform must be selected.
+                    </div>
+                  </div>
+
+                  <div class="w-full mb-3 lg:w-2/5">
+                    <button id="dateRangeButton" data-dropdown-toggle="dateRangeDropdown" data-dropdown-ignore-click-outside-class="datepicker" type="button" class="w-full flex items-center justify-center text-gray-300 bg-neutral-900 p-2 rounded-lg border border-purple-950 font-medium hover:text-violet-500 text-sm">Start date <p class="ms-1"> - End date</p> <svg class="w-3 h-3 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    </button>
+
+                    <div id="dateRangeDropdown" class="z-10 hidden  rounded-lg shadow-sm w-80 lg:w-96 bg-gray-100">
+                      <div class="p-3" aria-labelledby="dateRangeButton">
+                        <div class="flex items-center">
+                          <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                              <svg class="w-4 h-4 text-violet-700 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                  </svg>
+                                </div>
+                              <input required formControlName="start_date"  name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full ps-10 p-2.5" placeholder="Start date">
+                            </div>
+                            <span class="mx-2 text-violet-700">to</span>
+                            <div class="relative">
+                              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-violet-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                </svg>
+                              </div>
+                              <input  formControlName="end_date"  name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full ps-10 p-2.5 s:ring-blue-500 " placeholder="End date">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="requestForm.controls.start_date.invalid && requestForm.controls.start_date.touched || requestForm.controls.end_date.invalid && requestForm.controls.end_date.touched"
+                        class="text-red-500 text-xs mt-1">
+                          D/MM/YYYY example: 4/07/2025
+                      </div>
+                  </div>
+
+                  <div class="w-full mb-3 lg:w-2/5">
+                    <label class="block text-xs font-medium text-white mb-2">minimum number of tweets (X - Twitter)</label>
+                    <input type="number" formControlName="number_of_tweets" max="500"
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                      placeholder="Enter number only">
+                    <div *ngIf="requestForm.get('number_of_tweets')?.invalid && requestForm.get('number_of_tweets')?.touched"
+                      class="text-red-500 text-sm">
+                      maximum allowed number is 500
+                    </div>
+                  </div>
+
+                  <div class="w-full mb-3 lg:w-2/5">
+                    <label class="block text-xs font-medium text-white mb-2">minimum number of posts (Facebook)</label>
+                    <input type="number" formControlName="number_of_posts" max="100"
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                      placeholder="Enter number only">
+                    <div *ngIf="requestForm.get('number_of_posts')?.invalid && requestForm.get('number_of_posts')?.touched"
+                      class="text-red-500 text-sm">
+                      maximum allowed number is 100
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3 md:mb-2 lg:mb-4">
+                  <label for="request_description" class="block text-sm font-medium text-gray-300">
+                    Request Description <span class="text-red-500">*</span>
+                  </label>
+                  <div class="mt-2 relative">
+                    <textarea dir="auto" cols="30" rows="5" name="request_description" id="request_description"
+                      formControlName="request_description" required
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 bg-neutral-900 border border-purple-900 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+                    </textarea>
+
+                    <div *ngIf="requestForm.controls.request_description.touched && requestForm.controls.request_description.invalid"
+                      class="text-red-500 text-xs mt-1">
+
+                      <div *ngIf="requestForm.controls.request_description.errors?.['required']">
+                        Request description is required.
+                      </div>
+
+                      <div *ngIf="requestForm.controls.request_description.errors?.['minlength']">
+                        Must be at least 20 characters.
+                      </div>
+
+                      <div *ngIf="requestForm.controls.request_description.errors?.['maxlength']">
+                        Must not exceed 250 characters.
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <div>
+                  <button type="submit" [disabled]="requestForm.invalid || !isPlatformSelected()"
+                    class="disabled:bg-zinc-900 w-full mt-4 lg:mt-10 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-700 hover:bg-purple-900 ">
+                    Send Request
+                  </button>
+                </div>
+
+                <div class="text-center mt-6 text-gray-400 text-sm lg:text-base">
+                  <p>Fields marked with  <span class="text-red-500">*</span> are required</p>
+                  <p>By submitting this form, you agree to our <span class="mainColor">Privacy Policy</span></p>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+
+
+

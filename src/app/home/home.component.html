@@ -1,0 +1,316 @@
+<!-- start header -->
+<header class="header bg-neutral-900 min-h-lvh flex items-center justify-center pt-32 pb-4 md:pb-16 lg:pt-0 lg:pb-0">
+  <div class="container mx-auto  text-center lg:text-start">
+    <div class="flex items-center justify-between flex-col lg:flex-row">
+      <div class="px-6 lg:ps-16 reveal-from-bottom">
+        <div class="text-slate-300 text-2xl sm:text-3xl md:text-4xl font-bold">
+          Welcome to <br>
+          <h1 class="mainTextDesign mt-2"> Audience Pulse Platform </h1>
+        </div>
+        <p class="text-slate-300 mt-7 sm:mt-10 md:mt-12 text-sm sm:text-lg ">
+          The all-in-one platform that allows you to efficiently collect and <br>
+          analyze data from social media platforms through batch <br>
+          processing. Enjoy accurate reports and updated dashboards <br>
+          based on the latest collected data
+        </p>
+        <button class="relative inline-flex items-center justify-center p-0.5 mt-10 md:mt-24 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+          <span class="relative px-10 py-2.5 transition-all ease-in duration-75 text-purple-700 hover:text-white bg-black rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent" routerLink="/dashboard">
+            View Dashboard
+          </span>
+        </button>
+      </div>
+      <div class="w-25 me-0 lg:me-16 mt-5 pt-5 cursor-pointer">
+        <canvas class="w-2/4 md:w-full" id="myChart"></canvas>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end header -->
+
+<!-- start features -->
+<section class="features bg-neutral-900 text-center pb-10">
+  <div class="flex items-center justify-center flex-col px-10 py-3 md:py-5 reveal-from-top">
+    <h2 class="text-2xl md:text-4xl mt-4 text-gray-600 font-bold sectionTitle">Core Features</h2>
+    <p class="text-white font-bold my-2 md:my-5 text-sm md:text-base">Everything you need for data analytics</p>
+    <p class="text-slate-300 md:text-base">
+      Powerful features designed to help you analyze and understand your social <br>
+      media data with ease and precision.
+    </p>
+  </div>
+
+  <div class="container  mx-auto flex items-center justify-around flex-wrap py-4 px-5 md:py-12 lg:py-28  ">
+    <div class="reveal-from-left cart p-5 border border-indigo-800 rounded-lg shadow-lg hover:shadow-indigo-800 duration-700 cursor-pointer bg-gray-900 mt-10 ">
+      <div class="w-10 h-10 mb-3 border border-purple-500 rounded-md flex items-center justify-center" >
+        <i class="fa-solid fa-database text-purple-600"></i>
+      </div>
+      <div class="px-12 sm:px-24 text-center">
+        <div class="text-start">
+          <h5 class="mb-2 text-xl md:text-2xl font-semibold tracking-tight text-gray-200">Data Collection</h5>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-clock text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Batch Data Retrieval</p>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-plug text-purple-600"></i>
+          <p class="text-gray-400 ps-3">API Integration </p>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-hashtag text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Keyword Tracking</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-from-bottom cart p-5 border border-indigo-800 rounded-lg shadow-lg hover:shadow-indigo-800 duration-700 cursor-pointer bg-gray-900 mt-10">
+      <div class="w-10 h-10 mb-3 border border-purple-500 rounded-md flex items-center justify-center" >
+        <i class="fa-solid fa-gear text-purple-600"></i>
+      </div>
+      <div class="px-8 sm:px-16 text-center">
+        <div class="text-start ">
+          <h5 class="mb-2 text-xl md:text-2xl font-semibold tracking-tight text-gray-200">Data Processing</h5>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-paintbrush text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Scheduled Data Cleaning</p>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-brain text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Natural Language Processing</p>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-users text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Demographic Analysis</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-from-right cart p-5 border border-indigo-800 rounded-lg shadow-lg hover:shadow-indigo-800 duration-700 cursor-pointer bg-gray-900 mt-10 ">
+      <div class="w-10 h-10 mb-3 border border-purple-500 rounded-md flex items-center justify-center" >
+        <i class="fa-solid fa-chart-simple text-purple-600"></i>
+      </div>
+      <div class="px-8 sm:px-16 text-center">
+        <div class="text-start">
+          <h5 class="mb-2 text-xl md:text-2xl font-semibold tracking-tight text-gray-200">Reporting and Insights</h5>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-file text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Batch Report Generation</p>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-gauge text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Periodic Dashboards</p>
+        </div>
+        <div class="flex  items-center mb-3 text-sm md:text-base">
+          <i class="fa-solid fa-lightbulb text-purple-600"></i>
+          <p class="text-gray-400 ps-3">Custom Insights</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end features -->
+
+<!-- start team -->
+<section class="team bg-neutral-900 text-center">
+  <div class="flex items-center justify-center flex-col px-10 py-2 md:py-5 reveal-from-top">
+    <h2 class="text-3xl md:text-4xl mt-4 text-gray-600 font-bold sectionTitle">Our Team</h2>
+    <p class="text-white font-bold my-3">Meet our passionate team driving innovation in data analytics excellence.</p>
+  </div>
+
+
+<div class="pb-4 md:pb-10">
+  <div id="indicators-carousel" class="relative w-full pb-4 md:pb-10" data-carousel="static">
+    <!-- Carousel wrapper -->
+  <div class="Carousel relative overflow-hidden rounded-lg z-10 reveal-from-bottom">
+      <!-- Ahmed Hamed-->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+        <div class="container mx-auto flex items-center justify-center flex-wrap py-6 md:py-12 lg:py-28  ">
+          <div class="cart duration-700 py-6 px-16 mx-6 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <div class="flex flex-col items-center">
+              <img class="w-24 h-24 mb-3 rounded-full shadow-lg"  src="../../../assets/image/AhmedHamed.jpg" alt="Ahmed Hamed" loading="lazy"/>
+              <h5 class="mb-1 text-xl font-medium text-white">Ahmed Hamed</h5>
+              <span class="text-sm text-gray-500 dark:text-gray-400">software Engineer</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Expert in front end Developer</span>
+              <div class="flex mt-4 md:mt-6">
+                  <a href="http://ahmedhamed.surge.sh" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-solid fa-address-book text-2xl text-fuchsia-900"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/ahmed-hamed-591446359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
+                  </a>
+                  <a href="https://github.com/AhmedHamed2002" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-github text-2xl text-orange-600"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="cart duration-700 p-6 md:flex items-center justify-center mx-6  h-64 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+              <img class="w-24 h-24 mb-3 me-10 rounded-full shadow-lg" src="../../../assets/image/Al-Azhar.png" alt="Al-Azhar" loading="lazy"/>
+              <p class="mainTextDesign font-bold ">
+                Student at Al-Azhar University <br>
+                Faculty of Engineering
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ahmed Badr-->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <div class="container mx-auto flex items-center justify-center flex-wrap py-12 lg:py-28  ">
+          <div class="cart duration-700 py-6 px-16 mx-6 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <div class="flex flex-col items-center">
+              <img class="w-24 h-24 mb-3 rounded-full shadow-lg"  src="../../../assets/image/AhmedBadr.jpg" alt="Ahmed Babr" loading="lazy"/>
+              <h5 class="mb-1 text-xl font-medium text-white">Ahmed Badr</h5>
+              <span class="text-sm text-gray-500 dark:text-gray-400">software Engineer</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Expert in Back end Developer</span>
+              <div class="flex mt-4 md:mt-6">
+                  <a href="https://www.linkedin.com/in/ahmadbadreldin/" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
+                  </a>
+                  <a href="https://github.com/ahmadmbadreldin" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-github text-2xl text-orange-600"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block">
+          <div class="cart duration-700 p-6 md:flex items-center justify-center mx-6  h-64 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <img class="w-24 h-24 mb-3 me-10 rounded-full shadow-lg" src="../../../assets/image/Al-Azhar.png" alt="Al-Azhar" loading="lazy"/>
+            <p class="mainTextDesign font-bold ">
+              Student at Al-Azhar University <br>
+              Faculty of Engineering
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ibrahim Muhammed-->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <div class="container mx-auto flex items-center justify-center flex-wrap py-12 lg:py-28  ">
+          <div class="cart duration-700 py-6 px-16 mx-6 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <div class="flex flex-col items-center">
+              <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="../../../assets/image/user.jpg" alt="Ibrahim Muhammed" loading="lazy"/>
+              <h5 class="mb-1 text-xl font-medium text-white">Ibrahim Muhammed</h5>
+              <span class="text-sm text-gray-500 dark:text-gray-400">software Engineer</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Expert in Back end Developer</span>
+              <div class="flex mt-4 md:mt-6">
+                  <a href="https://www.linkedin.com/in/ibrahim-othman-0057a221a/" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
+                  </a>
+                  <a href="https://github.com/ibrahim-othman" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-github text-2xl text-orange-600"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden md:block">
+          <div class="cart duration-700 p-6 md:flex items-center justify-center mx-6 h-64  border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <img class="w-24 h-24 mb-3 me-10 rounded-full shadow-lg" src="../../../assets/image/Al-Azhar.png" alt="Al-Azhar" loading="lazy"/>
+            <p class="mainTextDesign font-bold ">
+              Student at Al-Azhar University <br>
+              Faculty of Engineering
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- Elsayed Nabil  -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <div class="container mx-auto flex items-center justify-center flex-wrap py-12 lg:py-28  ">
+          <div class="cart duration-700 py-6 px-16 mx-6 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <div class="flex flex-col items-center">
+              <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="../../../assets/image/ElsayedNabil.jpg" alt="Elsayed Nabil" loading="lazy"/>
+              <h5 class="mb-1 text-xl font-medium text-white">Elsayed Nabil</h5>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Dig data Engineer</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Expert in Data Engineer</span>
+              <div class="flex mt-4 md:mt-6">
+                  <a href="https://www.linkedin.com/in/esayed-/" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
+                  </a>
+                  <a href="https://github.com/Esayed4" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-github text-2xl text-orange-600"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden md:block">
+          <div class="cart duration-700 p-6 md:flex items-center justify-center mx-6 h-64 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <img class="w-24 h-24 mb-3 me-10 rounded-full shadow-lg" src="../../../assets/image/Al-Azhar.png" alt="Al-Azhar" loading="lazy"/>
+            <p class="mainTextDesign font-bold ">
+              Student at Al-Azhar University <br>
+              Faculty of Engineering
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- Mahmoud Hamdy -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <div class="container mx-auto flex items-center justify-center flex-wrap py-12 lg:py-28  ">
+          <div class="cart duration-700 py-6 px-16 mx-6 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <div class="flex flex-col items-center">
+              <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="../../../assets/image/MahmoudHamdy.jpg" alt="Mahmoud Hamdy" loading="lazy"/>
+              <h5 class="mb-1 text-xl font-medium text-white">Mahmoud Hamdy</h5>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Dig data Engineer</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Expert in Data Engineer</span>
+              <div class="flex mt-4 md:mt-6">
+                  <a href="https://www.linkedin.com/in/mahmoud-hamdy-83773a298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
+                  </a>
+                  <a href="https://github.com/MahmoudHamdy03" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center  rounded-lg">
+                    <i class="fa-brands fa-github text-2xl text-orange-600"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden md:block">
+          <div class="cart duration-700 p-6 md:flex items-center justify-center mx-6 h-64 border border-indigo-800 rounded-lg shadow-sm cursor-pointer bg-gray-900 mt-10 lg:mt-0">
+            <img class="w-24 h-24 mb-3 me-10 rounded-full shadow-lg" src="../../../assets/image/Al-Azhar.png" alt="Al-Azhar" loading="lazy"/>
+            <p class="mainTextDesign font-bold ">
+              Student at Al-Azhar University <br>
+              Faculty of Engineering
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!-- Slider indicators -->
+  <div class="absolute z-10 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+  </div>
+  <!-- Slider controls -->
+  <button type="button" class="absolute top-0 start-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-gray-800/70 group-focus:outline-none">
+      <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+      </svg>
+      <span class="sr-only">Previous</span>
+    </span>
+  </button>
+  <button type="button" class="absolute top-0 end-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-gray-800/70 group-focus:outline-none">
+      <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+      </svg>
+      <span class="sr-only">Next</span>
+    </span>
+  </button>
+</div>
+</div>
+
+</section>
+<!-- end team -->
+
+<!-- start footer -->
+<app-footer></app-footer>
+<!-- end footer -->

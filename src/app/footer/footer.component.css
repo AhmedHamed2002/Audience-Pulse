@@ -1,0 +1,8 @@
+.list{
+  transition: 1.2s;
+  color: rgb(120, 121, 122);
+  &:hover{
+    transform: scale(0.9);
+    color: #a855f7 ;
+  }
+}

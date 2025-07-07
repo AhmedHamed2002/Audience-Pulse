@@ -1,0 +1,57 @@
+header{
+  background-image: url("../../../public/assets/image/testmonialsreview.png");
+  background-position:bottom;
+  background-size: 100% 75%;
+  background-repeat: no-repeat;
+}
+
+.features{
+  background-image: url("../../../public/assets/image/divideroverviews.png");
+  background-position:top;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  min-height: 500px;
+}
+
+.team{
+  background-image: url("../../../public/assets/image/fetured-divider.png");
+  background-position:top;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  min-height: 500px;
+}
+
+.cart:hover{
+  transform: scale(1.1);
+  background: linear-gradient(to right ,  #4c22d58b , #4c22d58b ,#29292b);
+
+}
+
+.Carousel{
+  height: 420px !important;
+}
+
+@media (width <= 40rem) {
+  header{
+    background-image: url("../../../public/assets/image/testmonialsreview.png");
+    background-position:bottom;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+  }
+  .features{
+    background-color: #080809 !important;
+    background-image: url("../../../public/assets/image/divideroverviews.png");
+    background-position:top;
+    background-size: 100% 35%;
+    background-repeat: no-repeat;
+    min-height: 500px;
+  }
+  .team{
+    background-color: #080809 !important;
+    background-image: url("../../../public/assets/image/fetured-divider.png");
+    background-position:top;
+    background-size: 100% 30%;
+    background-repeat: no-repeat;
+    min-height: 500px;
+  }
+}

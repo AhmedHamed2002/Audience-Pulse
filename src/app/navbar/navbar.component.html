@@ -1,0 +1,42 @@
+@if(logined){
+
+  <div class="w-full flex items-center justify-center">
+    <nav class="mainBgDesign fixed w-10/12 z-20 top-5 rounded-3xl shadow-md reveal-from-bottom">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
+      <div (click)="closeMenu()" class="flex items-center space-x-3 rtl:space-x-reverse ms-3 lg:ms-8 py-1 px-3 cursor-pointer" routerLink="home">
+        <span class="mainText self-center text-lg sm:text-xl lg:text-2xl ">AudiencePulse</span>
+      </div>
+      <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <i (click)="closeMenu()" class="fa-solid cursor-pointer fa-circle-user text-2xl md:text-3xl lg:text-4xl font-medium rounded-lg  px-3 py-2 text-centercursor-pointer text-slate-200 hover:text-purple-300" routerLink="profile" routerLinkActive="asstColor"></i>
+          <button (click)="toggleMenu()" data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center mx-1  w-10 h-10 justify-center text-sm text-slate-200 rounded-lg md:hidden hover:bg-purple-900 focus:outline-none focus:ring-2" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+        </button>
+      </div>
+      <div [class.hidden]="!isMenuOpen" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-4 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+          <li (click)="closeMenu()" class="flex items-center cursor-pointer text-slate-200 hover:text-purple-300" routerLink="home" routerLinkActive="asstColor">
+            <i class="fa-solid fa-house-laptop me-2 text-lg md:text-sm lg:text-lg"></i>
+            <span class="block py-2 px-3 text-lg md:text-sm lg:text-lg rounded-sm md:p-0" aria-current="page">Home</span>
+          </li>
+          <li (click)="closeMenu()" class="flex items-center cursor-pointer text-slate-200 hover:text-purple-300" routerLink="latest_work" routerLinkActive="asstColor">
+            <i class="fa-solid fa-file me-2 text-lg md:text-sm lg:text-lg"></i>
+            <span class="block py-2 px-3 text-lg md:text-sm lg:text-lg rounded-sm md:p-0" aria-current="page">Latest Works</span>
+          </li>
+          <li (click)="closeMenu()" class="flex items-center cursor-pointer  text-slate-200 hover:text-purple-300" routerLink="dashboard" routerLinkActive="asstColor">
+            <i class="fa-solid fa-chart-pie me-2 text-lg md:text-sm lg:text-lg"></i>
+            <span class="block py-2 px-3 text-lg md:text-sm lg:text-lg rounded-sm md:p-0" aria-current="page">Dashboard</span>
+          </li>
+          <li (click)="closeMenu()" class="flex items-center cursor-pointer  text-slate-200 hover:text-purple-300" routerLink="contact" routerLinkActive="asstColor">
+            <i class="fa-solid fa-users me-2 text-lg md:text-sm lg:text-lg"></i>
+            <span class="block py-2 px-3 text-lg md:text-sm lg:text-lg rounded-sm md:p-0" aria-current="page">Contact</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+}

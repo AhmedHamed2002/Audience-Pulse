@@ -1,0 +1,862 @@
+@if(dashboards.length > 0 && flag){
+<div class="flex justify-between bg-neutral-900 pt-28">
+
+<div class="h-lvh sticky w-4/12 px-2 py-3 md:top-24 hidden lg:block ">
+  <div  class="flex items-center justify-between px-3">
+    <h2 class="sectionTitle text-2xl lg:text-3xl ">Filter</h2>
+  </div>
+  <div class="w-full">
+    <form [formGroup]="filterForm" (ngSubmit)="submitFilter(filterForm)"
+      class="px-4 py-2 text-white rounded-lg grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <!-- Favorite Count -->
+      <div>
+        @if (view.request.x_twitter && view.request.facebook) {
+          <label class="block text-xs  font-medium">minimum favorite and like count</label>
+        }
+        @else if(view.request.x_twitter){
+          <label class="block text-xs  font-medium">minimum favorite count</label>
+        }
+        @else if(view.request.facebook){
+          <label class="block text-xs  font-medium">minimum like count</label>
+        }
+        <input type="number" formControlName="favorite_count"
+          class=" appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+          placeholder="Enter number only">
+        <div *ngIf="filterForm.get('favorite_count')?.invalid && filterForm.get('favorite_count')?.touched"
+          class="text-red-500  text-sm">
+          Only numbers are allowed.
+        </div>
+      </div>
+      <!-- Retweet Count -->
+      <div>
+        @if (view.request.x_twitter && view.request.facebook) {
+          <label class="block text-xs  font-medium">minimum Retweet and share count</label>
+        }
+        @else if(view.request.x_twitter && !view.request.facebook){
+          <label class="block text-xs  font-medium">minimum Retweet count</label>
+        }
+        @else if(!view.request.x_twitter && view.request.facebook){
+          <label class="block text-xs  font-medium">minimum share count</label>
+        }
+        <input type="number" formControlName="retweet_count"
+          class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+          placeholder="Enter number only">
+        <div *ngIf="filterForm.get('retweet_count')?.invalid && filterForm.get('retweet_count')?.touched"
+          class="text-red-500 text-sm">
+          Only numbers are allowed.
+        </div>
+      </div>
+      <!-- Views Count -->
+      @if (view.request.x_twitter) {
+        <div>
+          <label class="block text-sm font-medium">minimum Views Count</label>
+          <input type="number" formControlName="views_count"
+            class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+            placeholder="Enter number only">
+          <div *ngIf="filterForm.get('views_count')?.invalid && filterForm.get('views_count')?.touched"
+            class="text-red-500 text-sm">
+            Only numbers are allowed.
+          </div>
+        </div>
+      }
+      <!-- Reply Count -->
+      <div>
+        <label class="block text-sm font-medium">minimum Reply Count</label>
+        <input type="number" formControlName="reply_count"
+          class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+          placeholder="Enter number only">
+        <div *ngIf="filterForm.get('reply_count')?.invalid && filterForm.get('reply_count')?.touched"
+          class="text-red-500 text-sm">
+          Only numbers are allowed.
+        </div>
+      </div>
+      <!-- Quote Count -->
+      @if (view.request.x_twitter) {
+        <div>
+          <label class="block text-sm font-medium"> minimum Quote Count</label>
+          <input type="number" formControlName="quote_count"
+            class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+            placeholder="Enter number only">
+          <div *ngIf="filterForm.get('quote_count')?.invalid && filterForm.get('quote_count')?.touched"
+            class="text-red-500 text-sm">
+            Only numbers are allowed.
+          </div>
+        </div>
+      }
+      <!-- User Follower Count -->
+      @if (view.request.x_twitter) {
+        <div>
+        <label class="block text-sm font-medium">minimum User Follower Count</label>
+          <input type="number" formControlName="user_follower_count"
+            class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+            placeholder="Enter number only">
+          <div *ngIf="filterForm.get('user_follower_count')?.invalid && filterForm.get('user_follower_count')?.touched"
+            class="text-red-500 text-sm">
+            Only numbers are allowed.
+          </div>
+        </div>
+      }
+
+      <!-- Creation Date -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300">Start Date</label>
+        <input
+          type="text"
+          formControlName="creation_date"
+          placeholder="yyyy-mm-dd"
+          class="appearance-none block w-full px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+        />
+        <div *ngIf="filterForm.get('creation_date')?.invalid && filterForm.get('creation_date')?.touched"
+          class="text-red-500 text-sm">
+          Please enter a valid date in yyyy-mm-dd format.
+        </div>
+      </div>
+      <!-- end Date -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300">End Date</label>
+        <input
+          type="text"
+          formControlName="end_date"
+          placeholder="yyyy-mm-dd"
+          class="appearance-none block w-full px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+        />
+        <div *ngIf="filterForm.get('end_date')?.invalid && filterForm.get('end_date')?.touched"
+            class="text-red-500 text-sm">
+          Please enter a valid date in yyyy-mm-dd format.
+        </div>
+      </div>
+      <!-- Source -->
+        <div>
+        <label for="source" class="block text-sm font-medium text-gray-300">Source</label>
+        <select id="source" formControlName="source"
+          class="block w-full mt-1 px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+          @if (view.request.x_twitter && view.request.facebook) {
+            <option value="">All</option>
+          }
+          @if (view.request.x_twitter) {
+            <option value="twitter">Twitter</option>
+            <option value="Twitter for iPhone">Twitter for iPhone</option>
+            <option value="Twitter for Android">Twitter for Android</option>
+            <option value="Twitter Web App">Twitter Web App</option>
+          }
+          @if(view.request.facebook){
+            <option value="facebook">Facebook</option>
+          }
+        </select>
+      </div>
+      @if (view.request.x_twitter) {
+        <div class="flex justify-between md:justify-around items-center flex-wrap mt-6">
+          <!-- bot -->
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="user_bot" formControlName="user_bot"
+                class="w-4 h-4 text-violet-600 bg-neutral-900 border border-violet-700 rounded">
+          <label for="user_bot" class="text-sm text-white ">Is Bot?</label>
+        </div>
+        <!--verified -->
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="user_blue_is_verified" formControlName="user_blue_is_verified"
+          class="w-4 h-4 text-violet-600 bg-neutral-900 border border-violet-700 rounded">
+          <label for="user_blue_is_verified" class="text-sm text-white ">Is verified</label>
+        </div>
+      </div>
+    }
+      <!-- order by user -->
+      <div class="flex justify-start">
+        <h2 class="sectionTitle text-2xl lg:text-3xl">Ordered by</h2>
+      </div>
+      <div>
+        <select id="sort_by" formControlName="sort_by"
+        (change)="onSortChange($event)"
+          class="block w-full mt-1 px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+          <option value="views_count">Views count</option>
+          @if (view.request.x_twitter&& !view.request.facebook) {
+            <option value="follower_count">Follower count</option>
+          }
+          @if (view.request.x_twitter && view.request.facebook) {
+          <option value="favorite_count">Favorite - like count</option>
+          }
+          @else if (!view.request.facebook&& view.request.x_twitter) {
+            <option value="favorite_count">Favorite count</option>
+          }
+          @else if (view.request.facebook&& !view.request.x_twitter) {
+            <option value="favorite_count">Like count</option>
+          }
+          @if (view.request.x_twitter && view.request.facebook) {
+            <option value="retweet_count">Retweet - Share count</option>
+          }
+          @else if (view.request.x_twitter&& !view.request.facebook) {
+          <option value="retweet_count">Retweet count</option>
+          }
+          @else if (view.request.facebook&& !view.request.x_twitter) {
+          <option value="retweet_count">Share count</option>
+          }
+          <option value="reply_count">Reply count</option>
+        </select>
+      </div>
+      <!-- Submit -->
+      <div class="col-span-full">
+        <button  type="submit" [disabled]="filterForm.invalid && filterForm.touched" data-drawer-hide="drawer-contact" aria-controls="drawer-contact"
+          class="disabled:bg-zinc-900 text-white bg-violet-800 cursor-pointer hover:bg-violet-900 w-full font-medium rounded-lg text-sm px-5 py-2.5 mt-2 block">
+            <i class="fa-solid fa-check me-2"></i>
+            <span >Select</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- start dashboard -->
+<div class=" w-11/12 mx-auto lg:w-8/12 text-white py-3 ps-5 pe-5 md:pe-15 lg:border-l lg:border-violet-900">
+
+  <div class="header w-full mainBg rounded-md flex justify-between items-center py-2 px-3">
+    <h2>Hello , {{information.username}}</h2>
+    @if(Dropdown) {
+      <div>
+        <button
+          id="dropdown"
+          data-dropdown-toggle="dropdownM"
+          data-dropdown-trigger="click"
+          data-dropdown-delay="500"
+          class="text-sm md:text-xl bg-black text-white ms-4 px-2 py-1 rounded-lg flex items-center gap-2  hover:bg-neutral-800  duration-300">
+          {{ removeQuotes(view.request.query) }}
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+
+        <div
+          id="dropdownM"
+          class="z-10 hidden bg-neutral-800 divide-y divide-gray-100 rounded-lg shadow w-44">
+          <ul class="py-2 text-sm  dark:text-gray-200">
+            @for (item of dashboards; track $index) {
+              <li><p class="block p-2 text-white hover:bg-neutral-900 hover:text-violet-500 cursor-pointer" (click)="viewDashboard(item.id)"> {{ removeQuotes(item.request.query) }}</p></li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+
+    <!-- Modal toggle -->
+    <button
+      (click)="isModalOpen = true"
+      class="block lg:hidden text-white bg-black hover:bg-neutral-800 focus:outline-none font-medium rounded-lg text-sm px-2 py-2.5 text-center"
+      type="button">
+      Filter
+    </button>
+    <!-- Main modal -->
+    <div *ngIf="isModalOpen"
+      class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+      <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <div class="relative bg-neutral-900 rounded-lg shadow-sm dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5">
+            <button
+              type="button"
+              (click)="isModalOpen = false"
+              class="text-violet-800 bg-transparent hover:bg-violet-400 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="p-4 md:p-5 space-y-4">
+            <div  class="flex items-center justify-between px-3">
+              <h2 class="sectionTitle text-2xl lg:text-3xl ">Filter</h2>
+            </div>
+            <div class="w-full">
+              <form [formGroup]="filterForm" (ngSubmit)="submitFilter(filterForm)"
+                class="px-4 py-2 text-white rounded-lg grid grid-cols-2 gap-3">
+                <!-- Favorite Count -->
+                <div>
+                  @if (view.request.x_twitter && view.request.facebook) {
+                    <label class="block text-xs  font-medium">minimum favorite and like count</label>
+                  }
+                  @else if(view.request.x_twitter){
+                    <label class="block text-xs  font-medium">minimum favorite count</label>
+                  }
+                  @else if(view.request.facebook){
+                    <label class="block text-xs  font-medium">minimum like count</label>
+                  }
+                  <input type="number" formControlName="favorite_count"
+                    class=" appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                    placeholder="Enter number only">
+                  <div *ngIf="filterForm.get('favorite_count')?.invalid && filterForm.get('favorite_count')?.touched"
+                    class="text-red-500  text-sm">
+                    Only numbers are allowed.
+                  </div>
+                </div>
+                <!-- Retweet Count -->
+                <div>
+                  @if (view.request.x_twitter && view.request.facebook) {
+                    <label class="block text-xs  font-medium">minimum Retweet and share count</label>
+                  }
+                  @else if(view.request.x_twitter && !view.request.facebook){
+                    <label class="block text-xs  font-medium">minimum Retweet count</label>
+                  }
+                  @else if(!view.request.x_twitter && view.request.facebook){
+                    <label class="block text-xs  font-medium">minimum share count</label>
+                  }
+                  <input type="number" formControlName="retweet_count"
+                    class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                    placeholder="Enter number only">
+                  <div *ngIf="filterForm.get('retweet_count')?.invalid && filterForm.get('retweet_count')?.touched"
+                    class="text-red-500 text-sm">
+                    Only numbers are allowed.
+                  </div>
+                </div>
+                <!-- Views Count -->
+                @if (view.request.x_twitter) {
+                  <div>
+                    <label class="block text-sm font-medium">minimum Views Count</label>
+                    <input type="number" formControlName="views_count"
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                      placeholder="Enter number only">
+                    <div *ngIf="filterForm.get('views_count')?.invalid && filterForm.get('views_count')?.touched"
+                      class="text-red-500 text-sm">
+                      Only numbers are allowed.
+                    </div>
+                  </div>
+                }
+                <!-- Reply Count -->
+                <div>
+                  <label class="block text-sm font-medium">minimum Reply Count</label>
+                  <input type="number" formControlName="reply_count"
+                    class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                    placeholder="Enter number only">
+                  <div *ngIf="filterForm.get('reply_count')?.invalid && filterForm.get('reply_count')?.touched"
+                    class="text-red-500 text-sm">
+                    Only numbers are allowed.
+                  </div>
+                </div>
+                <!-- Quote Count -->
+                @if (view.request.x_twitter) {
+                  <div>
+                    <label class="block text-sm font-medium"> minimum Quote Count</label>
+                    <input type="number" formControlName="quote_count"
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                      placeholder="Enter number only">
+                    <div *ngIf="filterForm.get('quote_count')?.invalid && filterForm.get('quote_count')?.touched"
+                      class="text-red-500 text-sm">
+                      Only numbers are allowed.
+                    </div>
+                  </div>
+                }
+                <!-- User Follower Count -->
+                @if (view.request.x_twitter) {
+                  <div>
+                  <label class="block text-sm font-medium">minimum User Follower Count</label>
+                    <input type="number" formControlName="user_follower_count"
+                      class="appearance-none block text-gray-300 w-full px-3 py-2 hover:bg-neutral-700 bg-neutral-900 border border-purple-950 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                      placeholder="Enter number only">
+                    <div *ngIf="filterForm.get('user_follower_count')?.invalid && filterForm.get('user_follower_count')?.touched"
+                      class="text-red-500 text-sm">
+                      Only numbers are allowed.
+                    </div>
+                  </div>
+                }
+
+                <!-- Creation Date -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-300">Start Date</label>
+                  <input
+                    type="text"
+                    formControlName="creation_date"
+                    placeholder="yyyy-mm-dd"
+                    class="appearance-none block w-full px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                  />
+                  <div *ngIf="filterForm.get('creation_date')?.invalid && filterForm.get('creation_date')?.touched"
+                    class="text-red-500 text-sm">
+                    Please enter a valid date in yyyy-mm-dd format.
+                  </div>
+                </div>
+                <!-- end Date -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-300">End Date</label>
+                  <input
+                    type="text"
+                    formControlName="end_date"
+                    placeholder="yyyy-mm-dd"
+                    class="appearance-none block w-full px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm"
+                  />
+                  <div *ngIf="filterForm.get('end_date')?.invalid && filterForm.get('end_date')?.touched"
+                      class="text-red-500 text-sm">
+                    Please enter a valid date in yyyy-mm-dd format.
+                  </div>
+                </div>
+                <!-- Source -->
+                  <div>
+                  <label for="source" class="block text-sm font-medium text-gray-300">Source</label>
+                  <select id="source" formControlName="source"
+                    class="block w-full mt-1 px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+                    @if (view.request.x_twitter && view.request.facebook) {
+                      <option value="">All</option>
+                    }
+                    @if (view.request.x_twitter) {
+                      <option value="twitter">Twitter</option>
+                      <option value="Twitter for iPhone">Twitter for iPhone</option>
+                      <option value="Twitter for Android">Twitter for Android</option>
+                      <option value="Twitter Web App">Twitter Web App</option>
+                    }
+                    @if(view.request.facebook){
+                      <option value="facebook">Facebook</option>
+                    }
+                  </select>
+                </div>
+                @if (view.request.x_twitter) {
+                  <div class="flex justify-between md:justify-around items-center flex-wrap mt-6">
+                    <!-- bot -->
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" id="user_bot" formControlName="user_bot"
+                          class="w-4 h-4 text-violet-600 bg-neutral-900 border border-violet-700 rounded">
+                    <label for="user_bot" class="text-sm text-white ">Is Bot?</label>
+                  </div>
+                  <!--verified -->
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" id="user_blue_is_verified" formControlName="user_blue_is_verified"
+                    class="w-4 h-4 text-violet-600 bg-neutral-900 border border-violet-700 rounded">
+                    <label for="user_blue_is_verified" class="text-sm text-white ">Is verified</label>
+                  </div>
+                </div>
+              }
+                <!-- order by user -->
+                <div class="flex justify-start">
+                  <h2 class="sectionTitle text-2xl lg:text-3xl">Ordered by</h2>
+                </div>
+                <div>
+                  <select id="sort_by" formControlName="sort_by"
+                  (change)="onSortChange($event)"
+                    class="block w-full mt-1 px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+                    <option value="views_count">Views count</option>
+                    @if (view.request.x_twitter&& !view.request.facebook) {
+                      <option value="follower_count">Follower count</option>
+                    }
+                    @if (view.request.x_twitter && view.request.facebook) {
+                    <option value="favorite_count">Favorite - like count</option>
+                    }
+                    @else if (!view.request.facebook&& view.request.x_twitter) {
+                      <option value="favorite_count">Favorite count</option>
+                    }
+                    @else if (view.request.facebook&& !view.request.x_twitter) {
+                      <option value="favorite_count">Like count</option>
+                    }
+                    @if (view.request.x_twitter && view.request.facebook) {
+                      <option value="retweet_count">Retweet - Share count</option>
+                    }
+                    @else if (view.request.x_twitter&& !view.request.facebook) {
+                    <option value="retweet_count">Retweet count</option>
+                    }
+                    @else if (view.request.facebook&& !view.request.x_twitter) {
+                    <option value="retweet_count">Share count</option>
+                    }
+                    <option value="reply_count">Reply count</option>
+                  </select>
+                </div>
+                <!-- Submit -->
+              <div class="col-span-full">
+                <button
+                  type="submit"
+                  [disabled]="filterForm.invalid && filterForm.touched"
+                  class="disabled:bg-zinc-900 text-white bg-violet-800 cursor-pointer hover:bg-violet-900 w-full font-medium rounded-lg text-sm px-5 py-2.5 mt-2 block">
+                  <i class="fa-solid fa-check me-2"></i>
+                  <span>Select</span>
+                </button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="header w-full bg-black cursor-pointer hover:bg-violet-400/20  rounded-md flex justify-center items-center flex-wrap my-3 py-4 px-2 md:px-8">
+    <div class="flex justify-between items-center flex-wrap me-10">
+      <h2 class="text-violet-400 me-3">Platforms:</h2>
+      <div class="flex flex-wrap">
+        <div class="flex  items-center gap-2 me-4">
+          <p>twitter - x : </p>
+          @if (view.request.x_twitter) {
+            <i class="fa-solid fa-circle-check text-green-600 mt-1"></i>
+          }
+          @else{
+            <i class="fa-solid fa-circle-xmark text-red-600 mt-1"></i>
+          }
+        </div>
+        <div class="flex items-center gap-2">
+          <p>facebook : </p>
+          @if (view.request.facebook) {
+            <i class="fa-solid fa-circle-check text-green-600 mt-1"></i>
+          }
+          @else{
+            <i class="fa-solid fa-circle-xmark text-red-600 mt-1"></i>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-start items-cente flex-wrap">
+      <p class="text-violet-500 me-4">form : <span class="text-white"> {{view.request.start_date}} </span> </p>
+      <p class="text-violet-500">to : <span class="text-white"> {{view.request.end_date}} </span> </p>
+    </div>
+  </div>
+  <div class="flex flex-col my-3 gap-3">
+    <div class="flex flex-wrap justify-center gap-3">
+      <div class="w-40 h-36 mainBg flex-grow rounded-md flex justify-around items-center cursor-pointer">
+          <i class="fa-solid fa-chart-pie text-white text-4xl"></i>
+          <div class="text-center leading-10">
+              <h3 class="text-xl sectionTitle"> {{ removeQuotes(view.request.query) }}</h3>
+          </div>
+      </div>
+        <div class="w-60 h-36 bg-black flex-grow rounded-md flex justify-between px-5 items-center cursor-pointer hover:bg-violet-400/20 ">
+            <i class="fa-solid fa-user text-white text-3xl me-10"></i>
+            <div>
+              <div class="pb-2">
+                <h3 class="text-base sectionTitle">Total Count </h3>
+              </div>
+              @if (view.request.x_twitter) {
+                <div class="text-center flex justify-between items-center">
+                  <h3 class="text-base">Twitter</h3>
+                  <p class="text-base mainColor ms-4">{{view.dashboard.neutral.count+view.dashboard.negative.count+view.dashboard.positive.count}}</p>
+                </div>
+                }
+                @if (view.request.facebook) {
+                  <div class="text-center flex justify-between items-center">
+                    <h3 class="text-base">Facebook</h3>
+                    <p class="text-base mainColor ms-4">{{view.dashboard.neutral.count_facebook+view.dashboard.negative.count_facebook+view.dashboard.positive.count_facebook}}</p>
+                  </div>
+                }
+            </div>
+        </div>
+        @if (view.request.x_twitter) {
+        <div class="w-60 h-36 bg-black flex-grow rounded-md flex justify-around items-center cursor-pointer hover:bg-violet-400/20">
+          <div class="text-center w-9/12 leading-10">
+            <div class="pb-2">
+              <h3 class="text-base sectionTitle">Twitter</h3>
+            </div>
+            <div class="flex flex-nowrap justify-between items-center">
+              <h3 class="text-base text-green-500">
+                <span class="inline-block w-2 h-2 bg-green-500 rounded-full me-1"></span> positive
+              </h3>
+              <p class="text-base">
+                {{ view.dashboard.positive.count }} -
+                {{
+                  (view.dashboard.positive.count /
+                  (view.dashboard.positive.count + view.dashboard.neutral.count + view.dashboard.negative.count)) * 100
+                  | number:'1.1-1'
+                }} %
+              </p>
+            </div>
+            <div class="flex flex-nowrap justify-between items-center">
+              <h3 class="text-base text-yellow-500">
+                <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full me-1"></span> neutral
+              </h3>
+              <p class="text-base">
+                {{ view.dashboard.neutral.count }} -
+                {{
+                  (view.dashboard.neutral.count /
+                  (view.dashboard.positive.count + view.dashboard.neutral.count + view.dashboard.negative.count)) * 100
+                  | number:'1.1-1'
+                }} %
+              </p>
+            </div>
+            <div class="flex flex-nowrap justify-between items-center">
+              <h3 class="text-base text-red-500">
+                <span class="inline-block w-2 h-2 bg-red-500 rounded-full me-1"></span> negative
+              </h3>
+              <p class="text-base">
+                {{ view.dashboard.negative.count }} -
+                {{
+                  (view.dashboard.negative.count /
+                  (view.dashboard.positive.count + view.dashboard.neutral.count + view.dashboard.negative.count)) * 100
+                  | number:'1.1-1'
+                }} %
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (view.request.facebook) {
+        <div class="w-60 h-36 bg-black flex-grow rounded-md flex justify-around items-center cursor-pointer hover:bg-violet-400/20">
+          <div class="text-center w-9/12 leading-10">
+            <div class="pb-2">
+              <h3 class="text-base sectionTitle">Facebook</h3>
+            </div>
+            <div class="flex flex-nowrap justify-between items-center">
+              <h3 class="text-base text-green-500">
+                <span class="inline-block w-2 h-2 bg-green-500 rounded-full me-1"></span> positive
+              </h3>
+              <p class="text-base">
+                {{ view.dashboard.positive.count_facebook }} -
+                {{
+                  (view.dashboard.positive.count_facebook /
+                  (view.dashboard.positive.count_facebook + view.dashboard.neutral.count_facebook + view.dashboard.negative.count_facebook)) * 100
+                  | number:'1.1-1'
+                }} %
+              </p>
+            </div>
+            <div class="flex flex-nowrap justify-between items-center">
+              <h3 class="text-base text-yellow-500">
+                <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full me-1"></span> neutral
+              </h3>
+              <p class="text-base">
+                {{ view.dashboard.neutral.count_facebook }} -
+                {{
+                  (view.dashboard.neutral.count_facebook /
+                  (view.dashboard.positive.count_facebook + view.dashboard.neutral.count_facebook + view.dashboard.negative.count_facebook)) * 100
+                  | number:'1.1-1'
+                }} %
+              </p>
+            </div>
+            <div class="flex flex-nowrap justify-between items-center">
+              <h3 class="text-base text-red-500">
+                <span class="inline-block w-2 h-2 bg-red-500 rounded-full me-1"></span> negative
+              </h3>
+              <p class="text-xs">
+                {{ view.dashboard.negative.count_facebook }} -
+                {{
+                  (view.dashboard.negative.count_facebook /
+                  (view.dashboard.positive.count_facebook + view.dashboard.neutral.count_facebook + view.dashboard.negative.count_facebook)) * 100
+                  | number:'1.1-1'
+                }} %
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="h-36 bg-black flex-grow rounded-md flex justify-around items-center cursor-pointer hover:bg-violet-400/20">
+        <i class=" fa-solid fa-pen text-white text-2xl md:text-4xl"></i>
+        @if (view.request.x_twitter) {
+          <div class="text-center leading-10">
+            <h3 class="text-xl">All Tweets</h3>
+            <div class="flex flex-wrap justify-center">
+              <h4 class="text-violet-500 me-2">Ordered By : </h4>
+              <span class="text-white">{{sortBy}}</span>
+            </div>
+              <p class="text-xl mainColor">{{view.dashboard.neutral.posts.length+view.dashboard.negative.posts.length+view.dashboard.positive.posts.length}}</p>
+            </div>
+        }
+        @if (view.request.facebook) {
+          <div class="text-center leading-10">
+            <h3 class="text-xl"> All Posts</h3>
+            <div class="flex flex-wrap justify-center">
+              <h4 class="text-violet-500 me-2">Ordered By : </h4>
+              <span class="text-white">{{sortBy}}</span>
+            </div>
+              <p class="text-xl mainColor">{{view.dashboard.neutral.posts_from_facebook.length+view.dashboard.negative.posts_from_facebook.length+view.dashboard.positive.posts_from_facebook.length}}</p>
+          </div>
+        }
+    </div>
+  </div>
+
+  <div class="header w-full mainBg rounded-md flex justify-between items-center py-2 px-3">
+      <h2>Dashboard</h2>
+      <i class="fa-solid fa-chart-pie cursor-pointer hover:text-orange-300"></i>
+  </div>
+  <div class="flex flex-wrap justify-center my-3 gap-3">
+    <div class="w-40 h-80 bg-black flex-grow rounded-md flex justify-around items-center cursor-pointer hover:bg-neutral-950">
+      <div class="text-center leading-10">
+        <canvas #myChartCanvas *ngIf="view"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="header w-full mainBg rounded-md flex justify-between items-center py-2 px-3">
+      <h2>Views</h2>
+      <i class="fa-solid fa-table cursor-pointer hover:text-orange-300"></i>
+  </div>
+  <div class="w-full text-center my-3">
+    <div class="w-full  py-2 bg-neutral-950 border border-violet-800 rounded-lg shadow-sm sm:p-8">
+      <div class="flex items-center justify-between mb-4">
+        <h5 class="text-sm md:text-xl font-bold px-6 md:px-0  sectionTitle">{{commentType}}</h5>
+        @if(showDropdown) {
+          <div>
+            <button
+              id="dropdownBtn"
+              data-dropdown-toggle="dropdownMenu"
+              data-dropdown-trigger="click"
+              data-dropdown-delay="500"
+              class="text-sm md:text-xl bg-violet-700 text-white me-4 md:me-0 px-2 md:px-10 py-1 rounded-lg flex items-center gap-2 border border-violet-700  hover:bg-transparent duration-300">
+              {{ commentType }}
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div
+              id="dropdownMenu"
+              class="z-10 hidden bg-neutral-800 divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm  dark:text-gray-200">
+                <li><p class="block px-4 py-2 text-green-500 hover:bg-neutral-900 cursor-pointer" (click)="sentiment('positive')">positive</p></li>
+                <li><p class="block px-4 py-2 text-yellow-500 hover:bg-neutral-900 cursor-pointer" (click)="sentiment('neutral')">neutral</p></li>
+                <li><p class="block px-4 py-2 text-red-500 hover:bg-neutral-900 cursor-pointer" (click)="sentiment('negative')">negative</p></li>
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="flow-root">
+          <ul role="list" class="divide-y divide-violet-500" dir="rtl">
+            @if(tweets.length > 0 || posts.length > 0){
+              @for (item of tweets; track $index) {
+                <li class="p-3 sm:p-4 hover:bg-neutral-900 duration-300 rounded-lg cursor-pointer my-2">
+                  <div class="flex flex-col items-cente justify-center">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center">
+                        <div>
+                        <img class="w-8 h-8 rounded-full" src="../../../assets/image/user.jpg" alt="user image">
+                        </div>
+                        <div class="flex items-center">
+                          <a [href]="'https://x.com/' + item.user_username "target="_blank">
+                            <h3 class="text-xs md:text-sm ms-2">{{item.user_name}}</h3>
+                          </a>
+                          <i class="fa-solid fa-circle-check text-xs ms-2 bg-slate-300 rounded-full"
+                            [ngClass]="item.user_blue_is_verified ? 'text-blue-500' : 'text-neutral-600'">
+                          </i>
+                          <span class="text-xs md:text-sm ms-2 bg-neutral-700 px-2 py-0.5  rounded-md ">{{item.user_follower_count}} متابع</span>
+                        </div>
+                      </div>
+                      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <i class="fa-brands fa-x-twitter text-2xl text-white hover:text-black hover:bg-white duration-300 cursor-pointer"></i>
+                        <span class="text-xs md:text-sm ms-2 px-2 py-0.5 rounded-sm" [ngClass]="{'bg-green-100 text-green-600 ': item.sentiment === 'positive','bg-yellow-100 text-yellow-600 ': item.sentiment === 'neutral','bg-red-200 text-red-600 ': item.sentiment === 'negative'}">
+                          {{item.sentiment}}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                      <div class="flex-1 min-w-0 ms-4" dir="auto">
+                        <p class="text-sm text-white px-5">
+                          {{item.text}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between pt-14 px-5"c dir="ltr">
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-heart"></i>
+                        {{item.favorite_count}}
+                      </p>
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-comment-dots"></i>
+                        {{item.reply_count}}
+                      </p>
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-retweet"></i>
+                        {{item.retweet_count}}
+                      </p>
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-eye"></i>
+                        {{item.views_count}}
+                      </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 px-5">
+                      <p class="text-sm  text-gray-300">{{item.creation_date}}</p>
+                      <a [href]="'https://twitter.com/' + item.user_username + '/status/' + item.tweet_id" target="_blank" class="text-violet-400 hover:underline">
+                        View Tweet
+                      </a>
+                      <p class="text-sm  text-gray-300">{{item.source}}</p>
+                    </div>
+                  </div>
+                </li>
+              }
+              @for (item of posts; track $index) {
+                <li class="p-3 sm:p-4 hover:bg-neutral-900 duration-300 rounded-lg cursor-pointer my-2">
+                  <div class="flex flex-col items-cente justify-center">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center">
+                        <div>
+                        <img class="w-8 h-8 rounded-full" src="../../../assets/image/user.jpg" alt="user image">
+                        </div>
+                        <div class="flex items-center">
+                          <a [href]="'https://www.facebook.com/' + item.user_id "target="_blank">
+                            <h3 class="text-xs md:text-sm ms-2">{{item.user_name}}</h3>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <i class="fa-brands fa-facebook text-2xl text-blue-500 hover:text-blue-400 cursor-pointer"></i>
+                        <span class="text-xs md:text-sm ms-2 px-2 py-0.5 rounded-sm" [ngClass]="{'bg-green-100 text-green-600 ': item.sentiment === 'positive','bg-yellow-100 text-yellow-600 ': item.sentiment === 'neutral','bg-red-200 text-red-600 ': item.sentiment === 'negative'}">
+                          {{item.sentiment}}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                      <div class="flex-1 min-w-0 ms-4" dir="auto">
+                        <p class="text-sm text-white px-5">
+                          {{item.text}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between pt-14 px-5"c dir="ltr">
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        {{item.favorite_count}}
+                      </p>
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-comment-dots"></i>
+                        {{item.reply_count}}
+                      </p>
+                      <p class="text-sm sm:text-xl text-white hover:text-violet-500 duration-200 cursor-pointer">
+                        <i class="fa-solid fa-retweet"></i>
+                        {{item.retweet_count}}
+                      </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 px-5">
+                      <p class="text-sm  text-gray-300">{{item.creation_date}}</p>
+                      <a [href]="'https://www.facebook.com/' + item.user_id + '/posts/' + item.tweet_id" target="_blank" class="text-violet-400 hover:underline">
+                        View Post
+                      </a>
+                      <p class="text-sm  text-gray-300">{{item.source}}</p>
+                    </div>
+                  </div>
+                </li>
+              }
+            }
+            @else {
+              <div>
+                <i class="text-violet-300 text-3xl fa-solid fa-comments"></i>
+                <p>no tweets or posts yet</p>
+              </div>
+            }
+          </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- end dashboard -->
+</div>
+}
+@else if(dashboards.length == 0 && !flag){
+  <app-loading></app-loading>
+}
+@else{
+  <div class="h-lvh flex flex-col justify-center items-center bg-neutral-900">
+
+      <div>
+        <i class="fa-solid fa-circle-info text-violet-700 text-4xl pb-6"></i>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-gray-200 py-3"> Hello , {{information.username}} .</h3>
+      </div>
+      <div>
+        <p class="text-gray-400 text-sm pb-2">
+          Sorry, we don't have any services available to you at the moment. You can view our latest work and apply for a service.
+        </p>
+      </div>
+      <div class="mt-10 text-center">
+        <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" routerLink="/contact">Service request</button>
+        <button class="relative inline-flex items-center justify-center p-0.5  me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+          <span class="relative px-10 py-2.5 transition-all ease-in duration-75 text-purple-700 hover:text-white bg-neutral-800 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent" routerLink="/latest_work">
+            View Latest Work
+          </span>
+        </button>
+
+    </div>
+  </div>
+}

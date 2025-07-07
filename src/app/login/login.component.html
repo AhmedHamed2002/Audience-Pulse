@@ -1,0 +1,72 @@
+<div class=" bg-neutral-900 min-h-lvh flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+
+  <div class="mx-auto reveal-from-bottom ">
+    <h2 class="text-center text-3xl  text-purple-600">
+      Welcome Back
+    </h2>
+    <p class="text-gray-400">Please enter your login details</p>
+  </div>
+
+  <div class="mt-8 mx-auto w-5/6 sm:3/5 md:w-3/6 lg:w-2/6">
+    <div class="sm:login py-8  shadow sm:shadow-purple-800 rounded-lg px-6 sm:px-10 reveal-from-top">
+      <h2 class="text-center text-2xl font-semibold text-purple-600 mb-2">login</h2>
+      <form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-300">
+              Email <span class="text-red-500">*</span>
+            </label>
+            <div class="mt-1">
+              <input id="email" name="email" type="email" formControlName="email" required
+                class="appearance-none block w-full px-3 py-2 text-gray-300 bg-neutral-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+              <div *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched"
+                  class="text-red-500 text-xs mt-1">
+                Valid email is required
+              </div>
+            </div>
+          </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-300">
+            Password <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative">
+            <input id="password" name="password" type="password" formControlName="password" required (copy)="disableAction($event)" (paste)="disableAction($event)" (cut)="disableAction($event)"
+              class="appearance-none block text-gray-300 w-full px-3 py-2 bg-neutral-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
+            <div *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched"
+                class="text-red-500 text-xs mt-1">
+                password is required
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" [disabled]="loginForm.invalid"
+            class="disabled:bg-zinc-800 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-700 hover:bg-purple-900 ">
+            Login
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-6">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-zinc-900 text-purple-800">
+              Don't have an account?
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <div routerLink="/register"
+            class="w-full flex justify-center py-2 px-4 border border-black rounded-md shadow-sm text-sm font-medium text-purple-700 bg-white hover:bg-purple-800 hover:text-white cursor-pointer">
+            Register
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

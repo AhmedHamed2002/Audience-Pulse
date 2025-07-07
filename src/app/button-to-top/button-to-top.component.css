@@ -1,0 +1,35 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 35px;
+  padding: 10px 15px;
+  border-radius: 50% !important;
+  background:linear-gradient(220deg, rgb(35, 48, 99) , rgb(91, 96, 221) ,rgb(15, 41, 112)) !important;
+  background-clip: text;
+  color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1000 !important;
+
+  &:hover i{
+    animation: move 1.1s  linear  infinite;
+  }
+}
+
+
+@keyframes move {
+  0%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-5px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+

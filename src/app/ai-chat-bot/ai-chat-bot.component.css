@@ -1,0 +1,39 @@
+button {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  padding: 10px 15px;
+  border-radius: 50% !important;
+  background: linear-gradient(to  top ,  #8e6ee4 , #5e479d ,#29292b) ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  transition: opacity 1.5s ease-in-out;
+  z-index:1000 !important;
+  box-shadow: 0px 0px  20px 2px rgba(119, 69, 205, 0.885);
+
+  &:hover{
+    background: linear-gradient(to top , #29292b , #8366d2 , #50407e ) ;
+    i{
+      background:linear-gradient(to right , rgb(28, 25, 25), rgb(126, 10, 152) , rgb(28, 25, 25));
+      background-clip: text;
+      color: transparent;
+    }
+  }
+}
+
+
+@keyframes move {
+  0%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-5px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Yellowtail&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --mainColor :#7052c2 ;
+  --asstColor:#ccadf0 ;
+  --k:#82dc72 ;
+}
+
+body{
+  margin: 0px ;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.mainColor{
+  color: var(--mainColor) !important;
+}
+.mainBg{
+  background-color: var(--mainColor) !important;
+}
+
+.asstColor{
+  color: var(--asstColor) !important;
+}
+
+.mainBgDesign{
+  background: linear-gradient(to  top ,  #8e6ee4 , #5e479d ,#29292b);
+}
+.mainTextDesign{
+  background: linear-gradient(to  top ,  #8e6ee4 , #5e479d ,#84848a);
+  background-clip: text;
+  color: transparent
+}
+
+.mainText{
+  background:linear-gradient(to right , rgb(28, 25, 25), rgb(126, 10, 152) , rgb(28, 25, 25));
+  background-clip: text;
+  color: transparent;
+  font-family: "Yellowtail", cursive;
+}
+
+.sectionTitle{
+  font-family: 'Playfair Display SC', serif;
+  font-weight: 900;
+  text-align: center;
+  color: var(--asstColor);
+}

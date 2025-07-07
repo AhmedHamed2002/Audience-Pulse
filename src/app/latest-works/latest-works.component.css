@@ -1,0 +1,8 @@
+.box{
+  background: linear-gradient(140deg ,#29292b ,#29292b ,  #524182 , #6c53ad );
+
+  &:hover{
+    background: linear-gradient(140deg ,#29292b ,#29292b ,  #453868 , #55428b );
+    transform: scale(0.97) !important;
+  }
+}
