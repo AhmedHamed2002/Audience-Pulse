@@ -1,5 +1,5 @@
 <!-- start profile -->
-<div class="profile bg-neutral-900 flex items-center justify-center px-6 md:px-0 pt-24 pb-10 lg:pb-0">
+<div class="profile bg-neutral-900 flex items-center justify-center px-2 md:px-0 pt-24 pb-10 lg:pb-0">
   <div class="container mx-auto py-6 md:py-10">
     <div class="flex justify-between items-center flex-col md:flex-row px-0 md:px-5 lg:px-14">
       <div class="reveal-from-left mainBgDesign text-center px-10 py-8 md:h-80 flex justify-center items-center flex-col rounded-2xl w-11/12 md:w-2/5 lg:w-2/6">
@@ -87,7 +87,7 @@
 <!-- end profile -->
 
 <!-- start services -->
-<div class=" bg-neutral-900  flex  justify-center px-6 md:px-0 pb-10  lg:pb-0">
+<div class=" bg-neutral-900  flex  justify-center px-2 md:px-0 pb-10  lg:pb-0">
   <div class="container mx-auto py-6 md:py-10">
     <div class="flex justify-between items-center flex-col px-0 md:px-5 lg:px-14">
       <div class="reveal-from-top mainBgDesign px-10 py-4 mb-5 flex justify-center items-center rounded-2xl w-11/12 md:w-full ">
@@ -104,8 +104,8 @@
               <div>
                 <h3 class="text-xl font-semibold text-gray-200 pb-1 h-8 overflow-hidden text-ellipsis whitespace-nowrap"  dir="auto"> {{ removeQuotes(board.query) }}</h3>
                 <div class="py-3">
-                  <div class="h-20">
-                    <p class="text-gray-400 text-center text-ellipsis" dir="auto">
+                  <div class="h-20 overflow-hidden">
+                    <p class="text-gray-400 text-center  text-ellipsis" dir="auto">
                       {{ board.request_description }}
                     </p>
                   </div>
@@ -114,7 +114,7 @@
                     <div>
                       <div class="flex items-center flex-wrap text-white my-2">
                         <h2 class="text-violet-400 me-3">Platforms:</h2>
-                        <div class="flex items-center gap-4">
+                        <div class="flex flex-wrap  items-center gap-4">
                           <div class="flex items-center gap-2">
                             <p>twitter - x : </p>
                             @if (board.x_twitter) {
@@ -196,7 +196,7 @@
 <!-- end services -->
 
 <!-- start  pervious request  -->
-<div class=" bg-neutral-900 flex justify-center px-16 md:px-0 pb-10 md:pb-16">
+<div class=" bg-neutral-900 flex justify-center px-6 md:px-0 pb-10 md:pb-16">
   <div class="container mx-auto py-6 md:py-10 px-0 md:px-3 lg:px-14">
     <div class="reveal-from-left px-3 mainColor">
       <h2 class="text-2xl md:text-4xl mb-3 font-serif"> Processing requests : </h2>

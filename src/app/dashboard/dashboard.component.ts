@@ -88,19 +88,13 @@ export class DashboardComponent implements OnInit , AfterViewChecked {
       }
     });
   }
-  onSortChange(event: Event) {
-    const value = (event.target as HTMLSelectElement).value;
-    this.sort(value);
-  }
-  sort(data: string): void {
-    const cleaned = data.replace(/_/g, ' ');
-    this.sortBy = cleaned;
-  }
-
+  
   submitFilter(input: any) {
       this._DataService.filter(input.value).subscribe({
         next: (data) => {
           if (data.message === "dashboard is done") {
+            this.sortBy = input.value.sort_by ;
+            this.sortBy = this.sortBy.replace(/_/g, ' ');
             this.isModalOpen = false;
             this.dashboards= data.result ;
             this.view = this.dashboards[this.view_now] ;

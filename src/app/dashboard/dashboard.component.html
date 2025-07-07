@@ -162,11 +162,11 @@
     }
       <!-- order by user -->
       <div class="flex justify-start">
-        <h2 class="sectionTitle text-2xl lg:text-3xl">Ordered by</h2>
+        <h2 class="sectionTitle text-xl lg:text-2xl mt-2">Ordered by</h2>
       </div>
       <div>
         <select id="sort_by" formControlName="sort_by"
-        (change)="onSortChange($event)"
+
           class="block w-full mt-1 px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
           <option value="views_count">Views count</option>
           @if (view.request.x_twitter&& !view.request.facebook) {
@@ -217,7 +217,7 @@
           data-dropdown-toggle="dropdownM"
           data-dropdown-trigger="click"
           data-dropdown-delay="500"
-          class="text-sm md:text-xl bg-black text-white ms-4 px-2 py-1 rounded-lg flex items-center gap-2  hover:bg-neutral-800  duration-300">
+          class="text-sm md:text-xl bg-black text-white mx-3 ms-4 px-2 py-1 rounded-lg flex items-center gap-2  hover:bg-neutral-800  duration-300">
           {{ removeQuotes(view.request.query) }}
           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -228,7 +228,7 @@
         <div
           id="dropdownM"
           class="z-10 hidden bg-neutral-800 divide-y divide-gray-100 rounded-lg shadow w-44">
-          <ul class="py-2 text-sm  dark:text-gray-200">
+          <ul class="py-2 text-sm text-center dark:text-gray-200">
             @for (item of dashboards; track $index) {
               <li><p class="block p-2 text-white hover:bg-neutral-900 hover:text-violet-500 cursor-pointer" (click)="viewDashboard(item.id)"> {{ removeQuotes(item.request.query) }}</p></li>
             }
@@ -425,11 +425,10 @@
               }
                 <!-- order by user -->
                 <div class="flex justify-start">
-                  <h2 class="sectionTitle text-2xl lg:text-3xl">Ordered by</h2>
+                  <h2 class="sectionTitle text-xl lg:text-2xl mt-2">Ordered by</h2>
                 </div>
                 <div>
                   <select id="sort_by" formControlName="sort_by"
-                  (change)="onSortChange($event)"
                     class="block w-full mt-1 px-3 py-2 bg-neutral-900 text-gray-300 border border-purple-950 rounded-md shadow-sm focus:outline-none focus:ring-violet-700 focus:border-violet-700 sm:text-sm">
                     <option value="views_count">Views count</option>
                     @if (view.request.x_twitter&& !view.request.facebook) {
