@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit , AfterViewChecked {
   filterForm = new FormGroup({
     favorite_count:new FormControl(null , Validators.pattern(/^\d+$/)) ,
     retweet_count:new FormControl(null , Validators.pattern(/^\d+$/)) ,
-    source: new FormControl("", Validators.pattern(/^$|^[A-Za-z]+(?:\sfor\s[A-Za-z\s]+)?$/)) ,
+    source: new FormControl("") ,
     user_follower_count: new FormControl(null, Validators.pattern(/^\d+$/)),
     creation_date: new FormControl(null ,Validators.pattern(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/)),
     end_date: new FormControl(null , Validators.pattern(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/)),
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit , AfterViewChecked {
       }
     });
   }
-  
+
   submitFilter(input: any) {
       this._DataService.filter(input.value).subscribe({
         next: (data) => {

@@ -240,7 +240,7 @@
     <!-- Modal toggle -->
     <button
       (click)="isModalOpen = true"
-      class="block lg:hidden text-white bg-black hover:bg-neutral-800 focus:outline-none font-medium rounded-lg text-sm px-2 py-2.5 text-center"
+      class="block lg:hidden text-white bg-black hover:bg-neutral-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center"
       type="button">
       Filter
     </button>
@@ -541,12 +541,12 @@
                 <span class="inline-block w-2 h-2 bg-green-500 rounded-full me-1"></span> positive
               </h3>
               <p class="text-base">
-                {{ view.dashboard.positive.count }} -
+                {{ view.dashboard.positive.count }} (
                 {{
                   (view.dashboard.positive.count /
                   (view.dashboard.positive.count + view.dashboard.neutral.count + view.dashboard.negative.count)) * 100
                   | number:'1.1-1'
-                }} %
+                }} %)
               </p>
             </div>
             <div class="flex flex-nowrap justify-between items-center">
@@ -554,12 +554,12 @@
                 <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full me-1"></span> neutral
               </h3>
               <p class="text-base">
-                {{ view.dashboard.neutral.count }} -
+                {{ view.dashboard.neutral.count }} (
                 {{
                   (view.dashboard.neutral.count /
                   (view.dashboard.positive.count + view.dashboard.neutral.count + view.dashboard.negative.count)) * 100
                   | number:'1.1-1'
-                }} %
+                }} %)
               </p>
             </div>
             <div class="flex flex-nowrap justify-between items-center">
@@ -567,12 +567,12 @@
                 <span class="inline-block w-2 h-2 bg-red-500 rounded-full me-1"></span> negative
               </h3>
               <p class="text-base">
-                {{ view.dashboard.negative.count }} -
+                {{ view.dashboard.negative.count }} (
                 {{
                   (view.dashboard.negative.count /
                   (view.dashboard.positive.count + view.dashboard.neutral.count + view.dashboard.negative.count)) * 100
                   | number:'1.1-1'
-                }} %
+                }} %)
               </p>
             </div>
           </div>
@@ -590,12 +590,12 @@
                 <span class="inline-block w-2 h-2 bg-green-500 rounded-full me-1"></span> positive
               </h3>
               <p class="text-base">
-                {{ view.dashboard.positive.count_facebook }} -
+                {{ view.dashboard.positive.count_facebook }} (
                 {{
                   (view.dashboard.positive.count_facebook /
                   (view.dashboard.positive.count_facebook + view.dashboard.neutral.count_facebook + view.dashboard.negative.count_facebook)) * 100
                   | number:'1.1-1'
-                }} %
+                }} %)
               </p>
             </div>
             <div class="flex flex-nowrap justify-between items-center">
@@ -603,25 +603,25 @@
                 <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full me-1"></span> neutral
               </h3>
               <p class="text-base">
-                {{ view.dashboard.neutral.count_facebook }} -
+                {{ view.dashboard.neutral.count_facebook }} (
                 {{
                   (view.dashboard.neutral.count_facebook /
                   (view.dashboard.positive.count_facebook + view.dashboard.neutral.count_facebook + view.dashboard.negative.count_facebook)) * 100
                   | number:'1.1-1'
-                }} %
+                }} %)
               </p>
             </div>
             <div class="flex flex-nowrap justify-between items-center">
               <h3 class="text-base text-red-500">
                 <span class="inline-block w-2 h-2 bg-red-500 rounded-full me-1"></span> negative
               </h3>
-              <p class="text-xs">
-                {{ view.dashboard.negative.count_facebook }} -
+              <p class="text-base">
+                {{ view.dashboard.negative.count_facebook }} (
                 {{
                   (view.dashboard.negative.count_facebook /
                   (view.dashboard.positive.count_facebook + view.dashboard.neutral.count_facebook + view.dashboard.negative.count_facebook)) * 100
                   | number:'1.1-1'
-                }} %
+                }} %)
               </p>
             </div>
           </div>
