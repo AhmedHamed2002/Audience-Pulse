@@ -1,4 +1,43 @@
-# AudiencePulse
+
+# 📊 AudiencePulse
+
+**AudiencePulse** is a powerful **social media analytics dashboard** built with **Angular 18**, designed to collect, analyze, and visualize **public sentiment** and **trending topics** related to brands, events, or keywords across **Twitter** and **Facebook**.  
+
+It helps businesses, marketers, and researchers understand **public opinion**, **customer feedback**, and **trending insights** in real time or on scheduled intervals.
+
+---
+
+## 🚀 Features
+
+- 🌐 Collect data from **Twitter** and **Facebook**
+- 💬 Perform **sentiment analysis** (Positive / Neutral / Negative)
+- 📈 Generate interactive **charts and visual reports**
+- ⏱ Schedule automatic data collection
+- 🔒 Secure **JWT-based authentication system**
+- 🧠 Support for **topic-based requests** and **filtering**
+- 🎨 Responsive, user-friendly **Angular frontend**
+- 🧩 Role-based **user profile and dashboard**
+
+---
+
+## 🏗️ Project Structure
+
+```bash
+AudiencePulse/
+├── src/
+│   ├── app/
+│   │   ├── services/
+│   │   │   └── data.service.ts       # Main API & Auth service
+│   │   ├── components/               # Angular components
+│   │   ├── pages/                    # Application pages
+│   │   ├── app.module.ts
+│   │   └── app-routing.module.ts
+│   ├── assets/                       # Static files (icons, images)
+│   ├── environments/
+│   │   ├── environment.ts            # Dev environment config
+│   │   └── environment.prod.ts       # Production environment config
+│   └── index.html
+└── README.md
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
 
