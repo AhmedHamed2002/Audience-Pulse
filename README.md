@@ -65,8 +65,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+---
 
-🧰 Tech Stack
+## 🧰 Tech Stack
 
 Angular 18
 
@@ -82,16 +83,22 @@ RESTful API Backend (Node.js / Express)
 
 JWT Authentication
 
-🧑‍💻 Contributors
+---
+
+## 🧑‍💻 Contributors
 
 Ahmed Hamed – Frontend Developer
 Specializing in Angular & React JS
 Passionate about building modern, scalable, and responsive applications.
 
-📝 License
+---
+
+## 📝 License
 
 This project is licensed under the MIT License — feel free to use and modify it.
 
-🌟 Acknowledgements
+---
+
+## 🌟 Acknowledgements
 
 Special thanks to everyone contributing to open-source libraries and APIs that made this project possible!
