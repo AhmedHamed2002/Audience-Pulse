@@ -64,3 +64,34 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+🧰 Tech Stack
+
+Angular 18
+
+TypeScript
+
+RxJS
+
+SweetAlert2 for alerts
+
+Bootstrap / TailwindCSS (for UI)
+
+RESTful API Backend (Node.js / Express)
+
+JWT Authentication
+
+🧑‍💻 Contributors
+
+Ahmed Hamed – Frontend Developer
+Specializing in Angular & React JS
+Passionate about building modern, scalable, and responsive applications.
+
+📝 License
+
+This project is licensed under the MIT License — feel free to use and modify it.
+
+🌟 Acknowledgements
+
+Special thanks to everyone contributing to open-source libraries and APIs that made this project possible!
