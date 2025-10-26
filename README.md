@@ -67,22 +67,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ---
 
-## **🧰 Tech Stack**
+## 🧰 Tech Stack
 
 
-Angular 18
+- Angular 18
 
-TypeScript
+- TypeScript
 
-RxJS
+- RxJS
 
-SweetAlert2 for alerts
+- SweetAlert2 for alerts
 
-Bootstrap / TailwindCSS (for UI)
+- TailwindCSS (for UI)
 
-RESTful API Backend (Node.js / Express)
+- RESTful API Backend
 
-JWT Authentication
+- JWT Authentication
 
 ---
 
