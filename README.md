@@ -67,7 +67,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ---
 
-## 🧰 Tech Stack
+## **🧰 Tech Stack**
+
 
 Angular 18
 
